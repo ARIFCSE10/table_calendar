@@ -19,7 +19,7 @@ class TableCalendarBase extends StatefulWidget {
   final bool sixWeekMonthsEnforced;
   final bool dowVisible;
   final Decoration? dowDecoration;
-  final Decoration? rowDecoration;
+  final List<Decoration?>? rowDecoration;
   final TableBorder? tableBorder;
   final Duration formatAnimationDuration;
   final Curve formatAnimationCurve;

@@ -19,7 +19,7 @@ class CalendarCore extends StatelessWidget {
   final bool sixWeekMonthsEnforced;
   final bool dowVisible;
   final Decoration? dowDecoration;
-  final Decoration? rowDecoration;
+  final List<Decoration?>? rowDecoration;
   final TableBorder? tableBorder;
   final double? dowHeight;
   final double? rowHeight;
