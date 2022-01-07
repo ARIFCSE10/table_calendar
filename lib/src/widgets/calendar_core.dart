@@ -70,6 +70,7 @@ class CalendarCore extends StatelessWidget {
             ? (constraints.maxHeight - actualDowHeight) /
                 _getRowCount(calendarFormat, baseDay)
             : null;
+        final weekNo = _getWeekNo(baseDay);
 
         return CalendarPage(
           visibleDays: visibleDays,
@@ -77,6 +78,7 @@ class CalendarCore extends StatelessWidget {
           dowDecoration: dowDecoration,
           rowDecoration: rowDecoration,
           tableBorder: tableBorder,
+          weekNo: weekNo,
           dowBuilder: (context, day) {
             return SizedBox(
               height: dowHeight,
@@ -301,5 +303,16 @@ class CalendarCore extends StatelessWidget {
     }
 
     return daysAfter;
+  }
+
+  int _getWeekNo(DateTime baseDay) {
+    int wom = 0;
+    DateTime startDate = _getVisibleRange(CalendarFormat.week, baseDay).start;
+    DateTime temp = startDate;
+    while (startDate.month == temp.month) {
+      wom++;
+      startDate = startDate.subtract(const Duration(days: 7));
+    }
+    return wom;
   }
 }
