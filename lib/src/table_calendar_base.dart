@@ -20,6 +20,7 @@ class TableCalendarBase extends StatefulWidget {
   final bool dowVisible;
   final Decoration? dowDecoration;
   final List<Decoration?>? rowDecoration;
+  final Decoration? defaultDecoration;
   final TableBorder? tableBorder;
   final Duration formatAnimationDuration;
   final Curve formatAnimationCurve;
@@ -48,6 +49,7 @@ class TableCalendarBase extends StatefulWidget {
     this.dowVisible = true,
     this.dowDecoration,
     this.rowDecoration,
+    this.defaultDecoration,
     this.tableBorder,
     this.formatAnimationDuration = const Duration(milliseconds: 200),
     this.formatAnimationCurve = Curves.linear,
@@ -219,6 +221,7 @@ class _TableCalendarBaseState extends State<TableCalendarBase>
               rowHeight: widget.rowHeight,
               dowDecoration: widget.dowDecoration,
               rowDecoration: widget.rowDecoration,
+              defaultDecoration: widget.defaultDecoration,
               tableBorder: widget.tableBorder,
               onPageChanged: (index, focusedMonth) {
                 if (!_pageCallbackDisabled) {

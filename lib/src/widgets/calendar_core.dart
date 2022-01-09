@@ -20,6 +20,7 @@ class CalendarCore extends StatelessWidget {
   final bool dowVisible;
   final Decoration? dowDecoration;
   final List<Decoration?>? rowDecoration;
+  final Decoration? defaultDecoration;
   final TableBorder? tableBorder;
   final double? dowHeight;
   final double? rowHeight;
@@ -49,6 +50,7 @@ class CalendarCore extends StatelessWidget {
     this.dowVisible = true,
     this.dowDecoration,
     this.rowDecoration,
+    this.defaultDecoration,
     this.tableBorder,
     this.scrollPhysics,
   })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null)),
@@ -77,6 +79,7 @@ class CalendarCore extends StatelessWidget {
           dowVisible: dowVisible,
           dowDecoration: dowDecoration,
           rowDecoration: rowDecoration,
+          defaultDecoration: defaultDecoration,
           tableBorder: tableBorder,
           weekNo: weekNo,
           dowBuilder: (context, day) {
@@ -307,11 +310,12 @@ class CalendarCore extends StatelessWidget {
 
   int _getWeekNo(DateTime baseDay) {
     int wom = 0;
-    DateTime startDate = _getVisibleRange(CalendarFormat.week, baseDay).start;
-    DateTime temp = startDate;
-    while (startDate.month == temp.month) {
+    DateTime _startDate = _getVisibleRange(CalendarFormat.week, baseDay).start;
+    DateTime _endDate = _getVisibleRange(CalendarFormat.week, baseDay).end;
+    DateTime temp = baseDay.day < 15 ? _endDate : _startDate;
+    while (_startDate.month == temp.month) {
       wom++;
-      startDate = startDate.subtract(const Duration(days: 7));
+      _startDate = _startDate.subtract(const Duration(days: 7));
     }
     return wom;
   }
