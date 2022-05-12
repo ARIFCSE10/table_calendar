@@ -56,9 +56,11 @@ class CalendarPage extends StatelessWidget {
       (index) {
         int rowNo = rowAmount == 1 ? (weekNo ?? 0) : index ~/ 7;
         return TableRow(
-          decoration: ((rowDecoration?.length ?? 0) > rowNo)
-              ? rowDecoration![rowNo]
-              : defaultDecoration,
+          decoration: rowAmount == 1
+              ? (rowDecoration?[0] ?? defaultDecoration)
+              : ((rowDecoration?.length ?? 0) > rowNo)
+                  ? rowDecoration![rowNo]
+                  : defaultDecoration,
           children: List.generate(
             7,
             (id) => dayBuilder(context, visibleDays[index + id]),
