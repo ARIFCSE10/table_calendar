@@ -313,6 +313,18 @@ class CalendarCore extends StatelessWidget {
     DateTime _startDate = _getVisibleRange(CalendarFormat.week, baseDay).start;
     DateTime _endDate = _getVisibleRange(CalendarFormat.week, baseDay).end;
     DateTime temp = baseDay.day < 15 ? _endDate : _startDate;
+    if (_startDate.month < _endDate.month) {
+      if (_startDate.month != focusedDay?.month) {
+        temp = _endDate;
+      } else {
+        temp = _startDate;
+      }
+    }
+    // print('=============');
+    // print(_startDate);
+    // print(_endDate);
+    // print(temp);
+    // print('=============');
     while (_startDate.month == temp.month) {
       wom++;
       _startDate = _startDate.subtract(const Duration(days: 7));
