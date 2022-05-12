@@ -19,7 +19,8 @@ class CalendarCore extends StatelessWidget {
   final bool sixWeekMonthsEnforced;
   final bool dowVisible;
   final Decoration? dowDecoration;
-  final List<Decoration?>? rowDecoration;
+  final List<Decoration?>? monthDecoration;
+  final Decoration? weekDecoration;
   final Decoration? defaultDecoration;
   final TableBorder? tableBorder;
   final double? dowHeight;
@@ -49,7 +50,8 @@ class CalendarCore extends StatelessWidget {
     this.sixWeekMonthsEnforced = false,
     this.dowVisible = true,
     this.dowDecoration,
-    this.rowDecoration,
+    this.monthDecoration,
+    this.weekDecoration,
     this.defaultDecoration,
     this.tableBorder,
     this.scrollPhysics,
@@ -72,16 +74,15 @@ class CalendarCore extends StatelessWidget {
             ? (constraints.maxHeight - actualDowHeight) /
                 _getRowCount(calendarFormat, baseDay)
             : null;
-        final weekNo = _getWeekNo(baseDay);
 
         return CalendarPage(
           visibleDays: visibleDays,
           dowVisible: dowVisible,
           dowDecoration: dowDecoration,
-          rowDecoration: rowDecoration,
+          monthDecoration: monthDecoration,
+          weekDecoration: weekDecoration,
           defaultDecoration: defaultDecoration,
           tableBorder: tableBorder,
-          weekNo: weekNo,
           dowBuilder: (context, day) {
             return SizedBox(
               height: dowHeight,
@@ -306,29 +307,5 @@ class CalendarCore extends StatelessWidget {
     }
 
     return daysAfter;
-  }
-
-  int _getWeekNo(DateTime baseDay) {
-    int wom = 0;
-    DateTime _startDate = _getVisibleRange(CalendarFormat.week, baseDay).start;
-    DateTime _endDate = _getVisibleRange(CalendarFormat.week, baseDay).end;
-    DateTime temp = baseDay.day < 15 ? _endDate : _startDate;
-    if (_startDate.month < _endDate.month) {
-      if (_startDate.month != focusedDay?.month) {
-        temp = _endDate;
-      } else {
-        temp = _startDate;
-      }
-    }
-    // print('=============');
-    // print(_startDate);
-    // print(_endDate);
-    // print(temp);
-    // print('=============');
-    while (_startDate.month == temp.month) {
-      wom++;
-      _startDate = _startDate.subtract(const Duration(days: 7));
-    }
-    return wom;
   }
 }

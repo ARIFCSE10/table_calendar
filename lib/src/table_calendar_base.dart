@@ -19,7 +19,8 @@ class TableCalendarBase extends StatefulWidget {
   final bool sixWeekMonthsEnforced;
   final bool dowVisible;
   final Decoration? dowDecoration;
-  final List<Decoration?>? rowDecoration;
+  final List<Decoration?>? monthDecoration;
+  final Decoration? weekDecoration;
   final Decoration? defaultDecoration;
   final TableBorder? tableBorder;
   final Duration formatAnimationDuration;
@@ -48,7 +49,8 @@ class TableCalendarBase extends StatefulWidget {
     this.sixWeekMonthsEnforced = false,
     this.dowVisible = true,
     this.dowDecoration,
-    this.rowDecoration,
+    this.monthDecoration,
+    this.weekDecoration,
     this.defaultDecoration,
     this.tableBorder,
     this.formatAnimationDuration = const Duration(milliseconds: 200),
@@ -220,7 +222,8 @@ class _TableCalendarBaseState extends State<TableCalendarBase>
               dowHeight: widget.dowHeight,
               rowHeight: widget.rowHeight,
               dowDecoration: widget.dowDecoration,
-              rowDecoration: widget.rowDecoration,
+              monthDecoration: widget.monthDecoration,
+              weekDecoration: widget.weekDecoration,
               defaultDecoration: widget.defaultDecoration,
               tableBorder: widget.tableBorder,
               onPageChanged: (index, focusedMonth) {
