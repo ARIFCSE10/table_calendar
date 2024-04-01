@@ -133,6 +133,9 @@ class CalendarStyle {
   /// Decoration for day cells that match `weekendDay` list.
   final Decoration weekendDecoration;
 
+  /// TextStyle for week number.
+  final TextStyle weekNumberTextStyle;
+
   /// TextStyle for day cells that do not match any other styles.
   final TextStyle defaultTextStyle;
 
@@ -144,6 +147,9 @@ class CalendarStyle {
 
   /// Border for the internal `Table` widget.
   final TableBorder tableBorder;
+
+  /// Padding for the internal `Table` widget.
+  final EdgeInsets tablePadding;
 
   /// Creates a `CalendarStyle` used by `TableCalendar` widget.
   const CalendarStyle({
@@ -214,10 +220,13 @@ class CalendarStyle {
     ),
     this.weekendTextStyle = const TextStyle(color: const Color(0xFF5A5A5A)),
     this.weekendDecoration = const BoxDecoration(shape: BoxShape.circle),
+    this.weekNumberTextStyle =
+        const TextStyle(fontSize: 12, color: const Color(0xFFBFBFBF)),
     this.defaultTextStyle = const TextStyle(),
     this.defaultDecoration = const BoxDecoration(shape: BoxShape.circle),
     this.rowDecoration = const BoxDecoration(),
     this.tableBorder = const TableBorder(),
+    this.tablePadding = const EdgeInsets.all(0),
   });
 }
 

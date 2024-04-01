@@ -15,14 +15,17 @@ class CalendarCore extends StatelessWidget {
   final DateTime lastDay;
   final CalendarFormat calendarFormat;
   final DayBuilder? dowBuilder;
+  final DayBuilder? weekNumberBuilder;
   final FocusedDayBuilder dayBuilder;
   final bool sixWeekMonthsEnforced;
   final bool dowVisible;
+  final bool weekNumbersVisible;
   final Decoration? dowDecoration;
   final List<Decoration?>? monthDecoration;
   final Decoration? weekDecoration;
   final Decoration? defaultDecoration;
   final TableBorder? tableBorder;
+  final EdgeInsets? tablePadding;
   final double? dowHeight;
   final double? rowHeight;
   final BoxConstraints constraints;
@@ -49,11 +52,14 @@ class CalendarCore extends StatelessWidget {
     this.previousIndex,
     this.sixWeekMonthsEnforced = false,
     this.dowVisible = true,
+    this.weekNumberBuilder,
+    required this.weekNumbersVisible,
     this.dowDecoration,
     this.monthDecoration,
     this.weekDecoration,
     this.defaultDecoration,
     this.tableBorder,
+    this.tablePadding,
     this.scrollPhysics,
   })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null)),
         super(key: key);
@@ -83,6 +89,7 @@ class CalendarCore extends StatelessWidget {
           weekDecoration: weekDecoration,
           defaultDecoration: defaultDecoration,
           tableBorder: tableBorder,
+          tablePadding: tablePadding,
           dowBuilder: (context, day) {
             return SizedBox(
               height: dowHeight,
@@ -102,6 +109,14 @@ class CalendarCore extends StatelessWidget {
             return SizedBox(
               height: constrainedRowHeight ?? rowHeight,
               child: dayBuilder(context, day, baseDay),
+            );
+          },
+          dowHeight: dowHeight,
+          weekNumberVisible: weekNumbersVisible,
+          weekNumberBuilder: (context, day) {
+            return SizedBox(
+              height: constrainedRowHeight ?? rowHeight,
+              child: weekNumberBuilder?.call(context, day),
             );
           },
         );

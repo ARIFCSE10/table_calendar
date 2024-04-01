@@ -1,3 +1,39 @@
+## [3.1.1]
+
+* Added cell text localization based on current locale
+
+## [3.1.0]
+
+* Upgraded to Dart 3
+* Updated intl version to 0.19.0
+
+## [3.0.9]
+
+* Updated intl version to 0.18.0
+* Added explicit android:exported value to AndroidManifest
+
+## [3.0.8]
+
+* Added tablePadding property to CalendarStyle
+
+## [3.0.7]
+
+* Added week numbering feature
+
+## [3.0.6]
+
+* Fixed issue with missing Flutter Web platform tag
+
+## [3.0.5]
+
+* Added a visual indicator to FormatButton
+* Header buttons are now platform-aware
+
+## [3.0.4]
+
+* Updated dependencies
+* Removed deprecated fields
+
 ## [3.0.3]
 
 * Added semantic label to prioritizedBuilder

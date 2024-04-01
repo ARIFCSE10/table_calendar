@@ -48,7 +48,7 @@ packages:
       sha256: caac504f942f41dfadcf45229ce8c47065b93919a12739f20d6173a883c5ec73
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.6"
   fake_async:
     dependency: transitive
     description:
@@ -114,7 +114,7 @@ packages:
       sha256: "86d08f85f1f58583b7b4b941d989f48ea6ce08c1724a1d10954a277c2ec36592"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -158,7 +158,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "3.0.3"
+    version: "3.1.1"
   term_glyph:
     dependency: transitive
     description:
